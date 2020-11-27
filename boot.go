@@ -101,11 +101,7 @@ func bootELFUnikernel(img []byte) {
 		usbarmory.LED("blue", false)
 		usbarmory.LED("white", false)
 
-		// TODO(al): There's some issue around the hw rng at the moment:
-		//           rngb.Init() will hang waiting for the RNG to finish
-		//           reseeding.
-		// rngb.Reset()
-
+		rngb.Reset()
 		imx6.ARM.InterruptsDisable()
 		imx6.ARM.CacheFlushData()
 		imx6.ARM.CacheDisable()
